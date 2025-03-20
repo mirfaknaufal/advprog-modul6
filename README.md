@@ -58,3 +58,10 @@ Current program is single-threaded. When we open the first tab (`/sleep`), the s
 While the thread is sleeping, the listener is busy and cannot accept or process the next connection until it wakes up.
 
 </details>
+
+<details>
+<summary>Commit 5 Reflection notes</summary>
+
+This refactoring is important as it prevents long-running requests like /sleep from blocking the entire server, improving scalability and responsiveness. The addition of error handling and safe concurrency using Rust’s ownership and locking mechanisms gave me insights into building efficient, real-world server architectures.
+
+</details>
