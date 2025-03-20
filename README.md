@@ -29,3 +29,24 @@ This reinforced how HTTP responses are structured, starting with the status line
 Screen capture:
 ![Commit 2 Screen Capture](assets/images/commit2.png)
 </details>
+<details>
+<summary>Commit 3 Reflection notes</summary>
+
+1. Why Refactoring Was Needed
+Initially, every response (either for 200 or 404) got the same page. Therefore, we need to refactor the code to accomodate new logics.
+Refactoring the code helps by making the code easier and making future changes simpler.
+
+2. How was the logic split
+We introduced a new pattern:
+```Rust
+let (status_line, contents) = if request_line.contains("GET / ") {
+        ("HTTP/1.1 200 OK", fs::read_to_string("hello.html").unwrap())
+    } else {
+        ("HTTP/1.1 404 NOT FOUND", fs::read_to_string("404.html").unwrap())
+    };
+```
+This logic routes response to their own page.
+
+Screen capture:
+![Commit 3 Screen Capture](assets/images/commit3.png)
+</details>
