@@ -12,3 +12,20 @@ TcpStream wrapped inside a BufReader to simplify reading the incoming stream lin
 3. Printing the HTTP Request
 By collecting the lines into a `Vec<String>`, full HTTP request headers are printed out with `println!()`.
 </details>
+
+<details>
+<summary>Commit 2 Reflection notes</summary>
+
+1. Serving a Static HTML File
+By adding `fs::read_to_string("hello.html")`, the program now can serve a static html file.
+
+2. Raw HTTP Response
+``` Rust
+let status_line = "HTTP/1.1 200 OK";
+let response = format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
+```
+This reinforced how HTTP responses are structured, starting with the status line, followed by the headers, and then the body separated by `\r\n\r\n`.
+
+Screen capture:
+![Commit 2 Screen Capture](assets/images/commit2.png)
+</details>
