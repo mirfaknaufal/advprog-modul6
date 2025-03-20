@@ -50,3 +50,11 @@ This logic routes response to their own page.
 Screen capture:
 ![Commit 3 Screen Capture](assets/images/commit3.png)
 </details>
+
+<details>
+<summary>Commit 4 Reflection notes</summary>
+
+Current program is single-threaded. When we open the first tab (`/sleep`), the second tab needs to wait for the first tab to be opened, this behaviour is called `blocking`. The TCP listener accepts incoming streams one by one. Every time a new connection arrives, `handle_connection()` is executed immediately inside the main thread. Since `/sleep` route has a `thread::sleep(10)`, this causes the thread to halt for 10 seconds.
+While the thread is sleeping, the listener is busy and cannot accept or process the next connection until it wakes up.
+
+</details>
